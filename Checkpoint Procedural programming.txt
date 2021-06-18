@@ -1,0 +1,57 @@
+/*----------------dot_product procedure. ---------------*/
+PROCEDURE pDot_product (ps:INTEGER,v1,v2: ARRAY_OF INTEGER[])
+VAR
+    i: INTEGER;
+BEGIN
+     FOR i FROM 0 TO V1.length-1  DO
+        ps:= ps + V1[i] * V2[i];
+    END_FOR
+END
+ALGORITHM dot_product
+VAR
+    ps,n:INTEGER;
+    V1,V2:ARRAY_OF INTEGER[50];
+BEGIN
+    write("give me the number of pairs");
+    read(n);
+    FOR i FROM 1 TO n STEP 1  DO
+        read(V1);
+        read(V2);
+        pDot_product(ps,V1,V2);
+        IF (ps=0) THEN
+            write("orthogonal vectors");
+        ELSE
+            write("none orthogonal vectors");
+        END_IF
+    END_FOR
+END
+/*----------------dot_product function. ---------------*/
+FUNCTION Fdot_function (V1,V2:ARRAY_OF INTEGER) : INTEGER
+VAR
+    i:INTEGER;
+    ps:INTEGER:=0;
+BEGIN
+    FOR i FROM 0 TO V1.length-1   DO
+        ps:=ps + V1[i]* V2[i];
+    END_FOR
+    RETURN ps ;
+END
+ALGORITHM dot_function
+VAR
+    ps,n:INTEGER;
+    V1,V2:ARRAY_OF INTEGER[50];
+BEGIN
+    write("give me the number of pairs");
+    read(n);
+    FOR i FROM 1 TO n  DO
+        read(V1);
+        read(V2);
+        ps:=Fdot_function(V1,V2);
+        IF (ps=0) THEN
+            write("orthogonal vectors");
+        ELSE
+            write("none orthogonal vectors");
+        END_IF
+    END_FOR
+    
+END
